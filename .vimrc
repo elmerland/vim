@@ -8,6 +8,9 @@ inoremap jk <ESC>
 " Change mapleader to <,>
 let mapleader = ","
 
+" Change colon to semicolon
+map ; :
+
 " Basic changes to filetype and encoding
 syntax on
 filetype plugin indent on
@@ -20,6 +23,7 @@ set encoding=utf-8
 "set background=dark 
 "colorscheme solarized
 """""""""""""""""""""""""""""""
+let g:badwolf_darkgutter = 1
 colorscheme badwolf
 
 " Set spell checking
