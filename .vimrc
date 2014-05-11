@@ -14,10 +14,13 @@ filetype plugin indent on
 set encoding=utf-8
 
 " Set color scheme
-set t_Co=256
-let g:solarized_termcolors=256  
-set background=dark 
-colorscheme solarized
+""""""""""""""""""""""""""""""""
+"set t_Co=256
+"let g:solarized_termcolors=256  
+"set background=dark 
+"colorscheme solarized
+"""""""""""""""""""""""""""""""
+colorscheme badwolf
 
 " Set spell checking
 " set spell spelllang=en_us
