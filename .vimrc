@@ -1,4 +1,5 @@
 " Run pathogen
+set nocompatible
 execute pathogen#infect()
 
 " Remap escape key to j-k
@@ -8,13 +9,15 @@ inoremap jk <ESC>
 let mapleader = ","
 
 " Basic changes to filetype and encoding
-filetype plugin indent on
 syntax on
-syntax enable
+filetype plugin indent on
 set encoding=utf-8
 
 " Set color scheme
-colorscheme badwolf
+set t_Co=256
+let g:solarized_termcolors=256  
+set background=dark 
+colorscheme solarized
 
 " Set spell checking
 " set spell spelllang=en_us
@@ -45,6 +48,7 @@ set hlsearch  " higlight matches
 :nohlsearch
 " Turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
+
 
 " Set folding settings
 set foldenable  " enable folding
