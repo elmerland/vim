@@ -3,13 +3,17 @@ set nocompatible
 execute pathogen#infect()
 
 " Remap escape key to j-k
-inoremap jk <ESC>
+inoremap <C-e> <ESC>
 
 " Change mapleader to <,>
 let mapleader = ","
 
 " Change colon to semicolon
 map ; :
+" Set save to Ctrl-w
+nmap <C-w> :w<CR>
+imap <C-w> <Esc>:w<CR>a
+imap <C-w> <Esc><C-w>
 
 " Basic changes to filetype and encoding
 syntax on
@@ -25,6 +29,10 @@ set encoding=utf-8
 """""""""""""""""""""""""""""""
 let g:badwolf_darkgutter = 1
 colorscheme badwolf
+
+" Set backup file directory
+set swapfile
+set dir=~/.vim-backup
 
 " Set spell checking
 " set spell spelllang=en_us
