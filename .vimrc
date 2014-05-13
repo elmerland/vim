@@ -73,3 +73,6 @@ set foldmethod=syntax
 " open/close folds
 nnoremap <space> za
 
+" JavaScript
+" Add javascript syntax higlighting.
+au FileType javascript call JavaScriptFold()
