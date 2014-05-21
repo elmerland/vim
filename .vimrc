@@ -30,7 +30,7 @@ set dir=~/.vim-backup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Allow backspacing over start of insert
-set backspace=eol,start
+set backspace=eol,start,indent
 " Show line numbers
 set number
 " Wrap text
@@ -47,6 +47,7 @@ set listchars=tab:\|\
 set tabstop=2
 set softtabstop=2
 set expandtab
+set shiftwidth=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key mappings
@@ -64,7 +65,7 @@ noremap -- ddp
 " __ : delete current line and place it above line
 noremap __ ddkP
 " <leader>u : upper case current word (insert mode)
-inoremap <leader>u <esc>viwUeli
+" inoremap <leader>u <esc>viwUeli
 " <leader>u : uppder case current word (normal mode)
 nnoremap <leader>u viwUe
 " <leader>ev : Open .vimrc in a new split to edit
@@ -76,7 +77,20 @@ nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 " <leader>' : surround current word with single quotes
 nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
 " <leader>s : toggle set list option
-nnoremap <leader>s :set list!<cr>
+nnoremap <leader>l :set list!<cr>
+" <leader>0 : go to the first non-blank character of the line
+nnoremap <leader>0 ^
+" <leader>e : go to the end of the line
+nnoremap <leader>1 $
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Movement mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" p : inside parenthesis, can be used to delete/change parameters of function
+onoremap p i(
+" b : function body, can be used to delete/change a function body
+onoremap b /return<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Abbreviations for insert mode
