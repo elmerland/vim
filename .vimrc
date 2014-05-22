@@ -97,6 +97,10 @@ nnoremap <space> za
 nnoremap <leader>f0 :set foldlevel=0<cr>
 nnoremap <leader>f1 :set foldlevel=1<cr>
 nnoremap <leader>f2 :set foldlevel=2<cr>
+" <leader>fs : add folding marker start
+<leader>fs i" {{{<esc>j
+" <leader>fe : add folding marker end
+<leader>fe i" }}}<esc>j
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Movement mappings
