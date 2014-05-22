@@ -93,6 +93,10 @@ nnoremap <leader>1 $
 nnoremap <leader>j i<cr><esc>
 " <space> : toggle folding
 nnoremap <space> za
+" <leader>f : set folding level
+nnoremap <leader>f0 :set foldlevel=0<cr>
+nnoremap <leader>f1 :set foldlevel=1<cr>
+nnoremap <leader>f2 :set foldlevel=2<cr>
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Movement mappings
