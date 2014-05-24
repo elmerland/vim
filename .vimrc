@@ -108,6 +108,10 @@ nnoremap <leader>d Vy<esc>p
 inoremap <leader>ff <esc>^iif (<esc>$a) {<cr>}<esc><up>$a<cr>
 " <leader>fe : Add else if statment parenthesis and curly brackets
 inoremap <leader>fe <esc>^<right>aelse if (<esc>$a) {<cr>}<esc><up>$a<cr>
+" <leader>fs : add folding marker start
+nnoremap <leader>fs i" {{{<esc>j
+" <leader>fe : add folding marker end
+nnoremap <leader>fe i" }}}<esc>j
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Movement mappings
