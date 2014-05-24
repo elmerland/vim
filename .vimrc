@@ -7,8 +7,8 @@ set nocompatible
 execute pathogen#infect()
 
 " Change mapleader to - and local leader to \
-let mapleader = "-"
-let maplocaleader = "\\"
+let mapleader     ="-"
+let maplocaleader ="\\"
 
 " Change colon to semicolon
 noremap ; :
@@ -30,7 +30,7 @@ set dir=~/.vim-backup
 set t_Co=256
 let g:solarized_termcolors=256  
 set background=dark 
-colorscheme solarized
+" colorscheme solarized
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscelaneous options
@@ -51,10 +51,10 @@ set nolist
 " Show tabs
 set listchars=tab:\|\ 
 " Set tab stop
-set tabstop=2
-set softtabstop=2
+set tabstop     =2
+set softtabstop =2
+set shiftwidth  =2
 set expandtab
-set shiftwidth=2
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key mappings
@@ -63,10 +63,10 @@ set shiftwidth=2
 " Remap escape key to j-k
 inoremap jk <esc>
 " Disable arrow keys in normal and insert mode
-noremap <up> <nop>
-noremap <down> <nop>
+noremap <up>    <nop>
+noremap <down>  <nop>
 noremap <right> <nop>
-noremap <left> <nop>
+noremap <left>  <nop>
 " -- : delete current line and place it below line
 noremap -- ddp
 " __ : delete current line and place it above line
@@ -93,10 +93,21 @@ nnoremap <leader>1 $
 nnoremap <leader>j i<cr><esc>
 " <space> : toggle folding
 nnoremap <space> za
-" <leader>f : set folding level
+" <leader>f# : set folding level
 nnoremap <leader>f0 :set foldlevel=0<cr>
 nnoremap <leader>f1 :set foldlevel=1<cr>
 nnoremap <leader>f2 :set foldlevel=2<cr>
+nnoremap <leader>f9 :set foldlevel=99<cr>
+" <leader>a_ : align around character
+nnoremap <leader>a= :Tabular /=<cr>
+nnoremap <leader>a: :Tabular /:<cr>
+nnoremap <leader>a, :Tabular /,<cr>
+" <leader>d : duplicate line below
+nnoremap <leader>d Vy<esc>p
+" <leader>ff : Add if statement parenthesis and curly brackets
+inoremap <leader>ff <esc>^iif (<esc>$a) {<cr>}<esc><up>$a<cr>
+" <leader>fe : Add else if statment parenthesis and curly brackets
+inoremap <leader>fe <esc>^<right>aelse if (<esc>$a) {<cr>}<esc><up>$a<cr>
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Movement mappings
@@ -124,20 +135,11 @@ iabbrev ccopy Copyright 2014 Elmer Landaverde, all rights reserved.
 " set commenting character for fyle types
 augroup filetype_comment_char
   autocmd!
-  autocmd FileType python nnoremap <buffer> <localleader>c I#<space><esc>
+  autocmd FileType python nnoremap     <buffer> <localleader>c I#<space><esc>
   autocmd FileType javascript nnoremap <buffer> <localleader>c I//<space><esc>
-  autocmd FileType vim nnoremap <buffer> <localleader>c I"<space><esc>
-  autocmd FileType c nnoremap <buffer> <localleader>c I//<space><esc>
+  autocmd FileType vim nnoremap        <buffer> <localleader>c I"<space><esc>
+  autocmd FileType c nnoremap          <buffer> <localleader>c I//<space><esc>
 augroup END
-
-" Add abbreviations for file types
-augroup filetype_abbreviations
-  autocmd!
-  autocmd FileType python :iabbrev <buffer> iff if:
-  autocmd FileType javascript :iabbrev <buffer> iff if ()<left>
-  autocmd FileType c :iabbrev <buffer> iff if ()<left>
-augroup END
-
 
 " Set folding settings
 augroup filetype_folding
