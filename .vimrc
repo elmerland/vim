@@ -28,9 +28,9 @@ set dir=~/.vim-backup
 " {{{
 " Set color scheme
 set t_Co=256
-let g:solarized_termcolors=256  
-set background=dark 
-" colorscheme solarized
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscelaneous options
@@ -44,17 +44,13 @@ set number
 set wrap
 " Wrap text at word breaks
 set linebreak
-" Display marker at column 80
-set colorcolumn=80
-" Show invisible character
-set nolist
-" Show tabs
-set listchars=tab:\|\ 
-" Set tab stop
+" Set tab settings
 set tabstop     =2
 set softtabstop =2
 set shiftwidth  =2
 set expandtab
+" Always show the status line
+set laststatus=2
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key mappings
@@ -112,6 +108,12 @@ inoremap <leader>fe <esc>^<right>aelse if (<esc>$a) {<cr>}<esc><up>$a<cr>
 nnoremap <leader>fs i" {{{<esc>j
 " <leader>fe : add folding marker end
 nnoremap <leader>fe i" }}}<esc>j
+" <leader>< : decrease window width
+nnoremap <leader>, 5<c-W><
+" <leader>> : increase window width
+nnoremap <leader>. 5<c-W>>
+" <leader>tt : toggle tagbar
+nnoremap <leader>tt :TagbarToggle<cr>
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Movement mappings
@@ -156,9 +158,18 @@ augroup END
 " Status line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " {{{
-set statusline=%-30.30F           " Show file name
-set statusline+=%=                " Swicth to the right side 
-set statusline+=FileType:\ %y     " Show file type
-set statusline+=\                 " Separator
-set statusline+=%5l/%L            " Current line / total lines
+" Set ariline color scheme
+let g:airline_theme = 'powerlineish'
+let g:airline_enable_branch = 1
+let g:airline_enable_syntastic = 1
+let g:airline_powerline_fonts = 1
+
+" vim-powerline symbols
+let g:airline_left_sep          = '⮀'
+let g:airline_left_alt_sep      = '⮁'
+let g:airline_right_sep         = '⮂'
+let g:airline_right_alt_sep     = '⮃'
+let g:airline_branch_prefix     = '⭠'
+let g:airline_readonly_symbol   = '⭤'
+let g:airline_linecolumn_prefix = '⭡'
 " }}}
