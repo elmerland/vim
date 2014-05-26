@@ -141,10 +141,10 @@ iabbrev ccopy Copyright 2014 Elmer Landaverde, all rights reserved.
 " set commenting character for fyle types
 augroup filetype_comment_char
   autocmd!
-  autocmd FileType python nnoremap     <buffer> <localleader>c I#<space><esc>
+  autocmd FileType python     nnoremap <buffer> <localleader>c I#<space><esc>
   autocmd FileType javascript nnoremap <buffer> <localleader>c I//<space><esc>
-  autocmd FileType vim nnoremap        <buffer> <localleader>c I"<space><esc>
-  autocmd FileType c nnoremap          <buffer> <localleader>c I//<space><esc>
+  autocmd FileType vim        nnoremap <buffer> <localleader>c I"<space><esc>
+  autocmd FileType c          nnoremap <buffer> <localleader>c I//<space><esc>
 augroup END
 
 " Set folding settings
@@ -159,10 +159,10 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " {{{
 " Set ariline color scheme
-let g:airline_theme = 'powerlineish'
-let g:airline_enable_branch = 1
+let g:airline_theme            = 'tomorrow'
+let g:airline_enable_branch    = 1
 let g:airline_enable_syntastic = 1
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts  = 1
 
 " vim-powerline symbols
 let g:airline_left_sep          = '⮀'
