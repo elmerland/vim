@@ -51,6 +51,12 @@ set shiftwidth  =2
 set expandtab
 " Always show the status line
 set laststatus=2
+" Enable basic mouse behaviour
+set mouse=a
+" Support rezising in tmux
+if exists('$TMUX')
+  set ttymouse=xterm2
+endif
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key mappings
