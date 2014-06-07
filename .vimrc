@@ -114,6 +114,14 @@ nnoremap <leader>, 5<c-W><
 nnoremap <leader>. 5<c-W>>
 " <leader>tt : toggle tagbar
 nnoremap <leader>tt :TagbarToggle<cr>
+" Tab navigation
+nnoremap <leader>te :tabnew<cr>
+nnoremap <leader>tc :tabc<cr>
+nnoremap <leader>tn :tabn<cr>
+nnoremap <leader>tp :tabp<cr>
+" Toggle comment block
+nnoremap <leader>bb :TCommentBlock<cr>
+vnoremap <leader>bb :TCommentBlock<cr>
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Movement mappings
