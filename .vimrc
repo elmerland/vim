@@ -24,11 +24,12 @@ set dir=~/.vim-backup
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " {{{
 " Set color scheme
 set t_Co=256
 let g:solarized_termcolors=256
+let colorcolumn="80,".join(range(120,999),",")
 set background=dark
 colorscheme solarized
 " }}}
@@ -44,6 +45,11 @@ set number
 set wrap
 " Wrap text at word breaks
 set linebreak
+" }}}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Indentation and tab options
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" {{{
 " Set tab settings
 set tabstop     =2
 set softtabstop =2
@@ -51,6 +57,11 @@ set shiftwidth  =2
 set expandtab
 " Always show the status line
 set laststatus=2
+" }}}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Mouse options
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" {{{
 " Enable basic mouse behaviour
 set mouse=a
 " Support rezising in tmux
@@ -152,15 +163,6 @@ iabbrev ccopy Copyright 2014 Elmer Landaverde, all rights reserved.
 " Autocommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " {{{
-" set commenting character for fyle types
-augroup filetype_comment_char
-  autocmd!
-  autocmd FileType python     nnoremap <buffer> <localleader>c I#<space><esc>
-  autocmd FileType javascript nnoremap <buffer> <localleader>c I//<space><esc>
-  autocmd FileType vim        nnoremap <buffer> <localleader>c I"<space><esc>
-  autocmd FileType c          nnoremap <buffer> <localleader>c I//<space><esc>
-augroup END
-
 " Set folding settings
 augroup filetype_folding
   autocmd!
@@ -169,7 +171,7 @@ augroup filetype_folding
 augroup END
 " }}}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Status line
+" Airline plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " {{{
 " Set ariline color scheme
@@ -191,15 +193,30 @@ let g:airline_linecolumn_prefix = '⭡'
 " CtrlP plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " {{{
-" Set mapping to start up plugin
+" Ignore these files
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+" Set command to start ctrlp
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+" Set root path to be the closest working directory
 let g:ctrlp_working_path_mode = 'ra'
+" Ignore the following files
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
 let g:ctrlp_user_command = 'find %s -type f'
+" }}}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Buffergator plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" {{{
+" Start buffergator when vim starts
+" augroup buffergator
+"   autocmd!
+"   autocmd VimEnter * BuffergatorToggle
+"   autocmd VimEnter * let g:buffergator_autoupdate = 1
+"   autocmd VimEnter * wincmd w
+" augroup END
 " }}}
