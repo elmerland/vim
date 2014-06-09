@@ -1,6 +1,6 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " Basic and global options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " {{{
 " Run pathogen
 set nocompatible
@@ -22,20 +22,20 @@ set encoding=utf-8
 set swapfile
 set dir=~/.vim-backup
 " }}}
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " Colors
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " {{{
 " Set color scheme
 set t_Co=256
 let g:solarized_termcolors=256
 let colorcolumn="80,".join(range(120,999),",")
-set background=dark
+set background=light
 colorscheme solarized
 " }}}
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " Miscelaneous options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " {{{
 " Allow backspacing over start of insert
 set backspace=eol,start,indent
@@ -45,10 +45,14 @@ set number
 set wrap
 " Wrap text at word breaks
 set linebreak
+" Allow vim to look for tags recursively
+set tags=./tags;~
+" Run ctags for project
+noremap <Leader>cc :!ctags-proj.sh<CR>
 " }}}
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " Indentation and tab options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " {{{
 " Set tab settings
 set tabstop     =2
@@ -58,9 +62,9 @@ set expandtab
 " Always show the status line
 set laststatus=2
 " }}}
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " Mouse options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " {{{
 " Enable basic mouse behaviour
 set mouse=a
@@ -69,9 +73,9 @@ if exists('$TMUX')
   set ttymouse=xterm2
 endif
 " }}}
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " Key mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " {{{
 " Remap escape key to j-k
 inoremap jk <esc>
@@ -140,18 +144,18 @@ nnoremap <leader>tp :tabp<cr>
 nnoremap <leader>bb :TCommentBlock<cr>
 vnoremap <leader>bb :TCommentBlock<cr>
 " }}}
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " Movement mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " {{{
 " p : inside parenthesis, can be used to delete/change parameters of function
 onoremap p i(
 " b : function body, can be used to delete/change a function body
 onoremap b /return<cr>
 " }}}
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " Abbreviations
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " {{{
 iabbrev adn and
 iabbrev waht what
@@ -159,9 +163,9 @@ iabbrev tehn then
 iabbrev @@ elmer@vt.edu
 iabbrev ccopy Copyright 2014 Elmer Landaverde, all rights reserved.
 " }}}
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " Autocommands
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " {{{
 " Set folding settings
 augroup filetype_folding
@@ -170,9 +174,9 @@ augroup filetype_folding
   autocmd FileType vim setlocal foldlevelstart=0
 augroup END
 " }}}
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " Airline plugin
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " {{{
 " Set ariline color scheme
 let g:airline_theme            = 'tomorrow'
@@ -189,9 +193,9 @@ let g:airline_branch_prefix     = '⭠'
 let g:airline_readonly_symbol   = '⭤'
 let g:airline_linecolumn_prefix = '⭡'
 " }}}
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " CtrlP plugin
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
 " {{{
 " Ignore these files
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
@@ -208,15 +212,46 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_user_command = 'find %s -type f'
 " }}}
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Buffergator plugin
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"------------------------------------------------------------------------------
+" BufferGator and NERDtree
+"------------------------------------------------------------------------------
 " {{{
-" Start buffergator when vim starts
-" augroup buffergator
-"   autocmd!
-"   autocmd VimEnter * BuffergatorToggle
-"   autocmd VimEnter * let g:buffergator_autoupdate = 1
-"   autocmd VimEnter * wincmd w
-" augroup END
+" Split VIEWPORT horizontally, with new split on the top
+let g:buffergator_viewport_split_policy    = "b"
+let g:buffergator_suppress_keymaps         = 1
+let g:buffergator_autodismiss_on_select    = 0
+let g:buffergator_split_size               = 25
+let g:buffergator_show_full_directory_path = 0
+" NERDtree settings
+let NERDTreeShowHidden                      = 1
+let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_open_on_gui_startup     = 1
+let g:nerdtree_tabs_no_startup_for_diff     = 1
+let g:nerdtree_tabs_smart_startup_focus     = 1
+let g:nerdtree_tabs_autoclose               = 1
+" Start both buffergator and NERDtree on startup
+augroup buffergator
+  autocmd!
+  autocmd VimEnter * NERDTree
+  autocmd VimEnter * BuffergatorToggle
+  autocmd VimEnter * let g:buffergator_autoupdate = 1
+  autocmd VimEnter * wincmd w
+augroup END
+
+" Toggle left sidebar: NERDTree and BufferGator
+" test per http://justmao.name/life/integrate-nerdtree-and-buffergator/
+function! LSidebarToggle()
+  let b = bufnr("%")
+    execute "NERDTreeToggle | BuffergatorToggle"
+    execute "set nonumber!"
+    execute ( bufwinnr(b) . "wincmd w" )
+endf
+noremap  <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
+noremap! <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
+" }}}
+"------------------------------------------------------------------------------
+" Tagbar plugin
+"------------------------------------------------------------------------------
+" {{{
+let g:tagbar_show_visibility = 1
 " }}}
