@@ -28,9 +28,9 @@ set dir=~/.vim-backup
 " {{{
 " Set color scheme
 set t_Co=256
-let g:solarized_termcolors=256
-let colorcolumn="80,".join(range(120,999),",")
-set background=light
+let g:solarized_termcolors=16
+" let colorcolumn="80,".join(range(120,999),",")
+set background=dark
 colorscheme solarized
 " }}}
 "------------------------------------------------------------------------------
@@ -88,6 +88,8 @@ noremap <left>  <nop>
 noremap -- ddp
 " __ : delete current line and place it above line
 noremap __ ddkP
+" <leader>du : duplicate line below
+nnoremap <leader>du Vy<esc>p
 " <leader>u : upper case current word (insert mode)
 inoremap <leader>u <esc>viwUeli
 " <leader>u : uppder case current word (normal mode)
@@ -119,15 +121,15 @@ nnoremap <leader>f9 :set foldlevel=99<cr>
 nnoremap <leader>a= :Tabular /=<cr>
 nnoremap <leader>a: :Tabular /:<cr>
 nnoremap <leader>a, :Tabular /,<cr>
-" <leader>d : duplicate line below
-nnoremap <leader>d Vy<esc>p
 " <leader>ff : Add if statement parenthesis and curly brackets
 inoremap <leader>ff <esc>^iif (<esc>$a) {<cr>}<esc><up>$a<cr>
 " <leader>fe : Add else if statment parenthesis and curly brackets
 inoremap <leader>fe <esc>^<right>aelse if (<esc>$a) {<cr>}<esc><up>$a<cr>
 " <leader>fs : add folding marker start
 nnoremap <leader>fs i" {{{<esc>j
+inoremap <leader>fs " {{{
 " <leader>fe : add folding marker end
+inoremap <leader>fe " }}}
 nnoremap <leader>fe i" }}}<esc>j
 " <leader>< : decrease window width
 nnoremap <leader>, 5<c-W><
@@ -174,6 +176,10 @@ augroup filetype_folding
   autocmd FileType vim setlocal foldlevelstart=0
 augroup END
 " }}}
+"------------------------------------------------------------------------------
+" Plugin comfigurations
+"------------------------------------------------------------------------------
+" {{{
 "------------------------------------------------------------------------------
 " Airline plugin
 "------------------------------------------------------------------------------
@@ -246,12 +252,53 @@ function! LSidebarToggle()
     execute "set nonumber!"
     execute ( bufwinnr(b) . "wincmd w" )
 endf
-noremap  <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
-noremap! <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
+nnoremap  <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
+" nnoremap! <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
 " }}}
 "------------------------------------------------------------------------------
 " Tagbar plugin
 "------------------------------------------------------------------------------
 " {{{
 let g:tagbar_show_visibility = 1
+" }}}
+"------------------------------------------------------------------------------
+" Rainbow paranthesis plugin
+"------------------------------------------------------------------------------
+" {{{
+" Set colors for parenthesis
+let g:rbpt_colorpairs = [
+    \ ['brown'       , 'RoyalBlue3']  ,
+    \ ['Darkblue'    , 'SeaGreen3']   ,
+    \ ['darkgray'    , 'DarkOrchid3'] ,
+    \ ['darkgreen'   , 'firebrick3']  ,
+    \ ['darkcyan'    , 'RoyalBlue3']  ,
+    \ ['darkred'     , 'SeaGreen3']   ,
+    \ ['darkmagenta' , 'DarkOrchid3'] ,
+    \ ['brown'       , 'firebrick3']  ,
+    \ ['gray'        , 'RoyalBlue3']  ,
+    \ ['black'       , 'SeaGreen3']   ,
+    \ ['darkmagenta' , 'DarkOrchid3'] ,
+    \ ['Darkblue'    , 'firebrick3']  ,
+    \ ['darkgreen'   , 'RoyalBlue3']  ,
+    \ ['darkcyan'    , 'SeaGreen3']   ,
+    \ ['darkred'     , 'DarkOrchid3'] ,
+    \ ['red'         , 'firebrick3']  ,
+    \ ]
+let g:rbpt_max            = 16
+let g:rbpt_loadcmd_toggle = 0
+augroup rainbow-parenthesis
+  autocmd!
+  autocmd VimEnter * RainbowParenthesesToggle
+  autocmd Syntax * RainbowParenthesesLoadRound
+  autocmd Syntax * RainbowParenthesesLoadSquare
+  autocmd Syntax * RainbowParenthesesLoadBraces
+augroup END
+" }}}
+"------------------------------------------------------------------------------
+" Changes plugin
+"------------------------------------------------------------------------------
+" {{{
+" Show diff window
+nnoremap <leader>di :CL<cr>
+" }}}
 " }}}
