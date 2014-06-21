@@ -94,6 +94,8 @@ nnoremap <leader>du Vy<esc>p
 inoremap <leader>u <esc>viwUeli
 " <leader>u : uppder case current word (normal mode)
 nnoremap <leader>u viwUe
+" <C-e> : go to end of current line
+inoremap <C-e> <esc>A
 " <leader>ev : Open .vimrc in a new split to edit
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " <leader>sv : source .vimrc
