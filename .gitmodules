@@ -87,3 +87,6 @@
 [submodule "bundle/vim-indent-guides"]
 	path = bundle/vim-indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "bundle/vim-ruby-interpolation"]
+	path = bundle/vim-ruby-interpolation
+	url = https://github.com/p0deje/vim-ruby-interpolation.git
