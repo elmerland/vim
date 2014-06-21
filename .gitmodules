@@ -71,11 +71,6 @@
 	url = https://github.com/godlygeek/tabular.git
 
 # Marks changes in files that have not being saved.
-[submodule "bundle/changesPlugin"]
-	path = bundle/changesPlugin
-	url = https://github.com/chrisbra/changesPlugin.git
-
-# Automtically inserts matching perenthesis, brackets, curly braces and quotes.
 [submodule "bundle/auto-pairs"]
 	path = bundle/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
