@@ -145,6 +145,10 @@ nnoremap <leader>tp :tabp<cr>
 " Toggle comment block
 nnoremap <leader>bb :TCommentBlock<cr>
 vnoremap <leader>bb :TCommentBlock<cr>
+" Paste from clipboard
+nnoremap <leader>p "+p
+" Copy to clipboard
+vnoremap <leader>y "+y
 " }}}
 "------------------------------------------------------------------------------
 " Movement mappings
