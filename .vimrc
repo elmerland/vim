@@ -1,4 +1,4 @@
-"------------------------------------------------------------------------------
+"------------------------------------------------------------------------------der>w
 " Basic and global options
 "------------------------------------------------------------------------------
 " {{{
@@ -21,6 +21,8 @@ set encoding=utf-8
 " Set backup file directory
 set swapfile
 set dir=~/.vim-backup
+
+set foldlevel=99
 " }}}
 "------------------------------------------------------------------------------
 " Colors
@@ -28,10 +30,10 @@ set dir=~/.vim-backup
 " {{{
 " Set color scheme
 set t_Co=256
-let g:solarized_termcolors=16
-" let colorcolumn="80,".join(range(120,999),",")
-set background=dark
-colorscheme solarized
+" let g:solarized_termcolors=16
+" " let colorcolumn="80,".join(range(120,999),",")
+" set background=light
+colorscheme molokai
 " }}}
 "------------------------------------------------------------------------------
 " Miscelaneous options
@@ -109,7 +111,9 @@ noremap <down>  <nop>
 noremap <right> <nop>
 noremap <left>  <nop>
 " <C-e> : go to end of current line
-inoremap <C-e> <esc>A
+inoremap <C-l> <esc>A
+" <C-k> : skip to the end of the line and create new line below
+inoremap <C-k> <esc>A<cr>
 " <leader>0 : go to the first non-blank character of the line
 nnoremap <leader>1 ^
 " <leader>e : go to the end of the line
@@ -125,8 +129,6 @@ noremap -- ddp
 noremap __ ddkP
 " <cr> : insert new line at cursor and move current line down
 nnoremap <cr> O<esc>j
-" <bs> : delete empty line abouve current line and move current line up
-nnoremap <bs> i<bs><esc>
 " <leader>du : duplicate line below
 nnoremap <leader>du Vy<esc>p
 " <leader>u : upper case current word (insert mode)
@@ -159,6 +161,12 @@ nnoremap <space> za
 nnoremap <leader>f0 :set foldlevel=0<cr>
 nnoremap <leader>f1 :set foldlevel=1<cr>
 nnoremap <leader>f2 :set foldlevel=2<cr>
+nnoremap <leader>f3 :set foldlevel=3<cr>
+nnoremap <leader>f4 :set foldlevel=4<cr>
+nnoremap <leader>f5 :set foldlevel=5<cr>
+nnoremap <leader>f6 :set foldlevel=6<cr>
+nnoremap <leader>f7 :set foldlevel=7<cr>
+nnoremap <leader>f8 :set foldlevel=8<cr>
 nnoremap <leader>f9 :set foldlevel=99<cr>
 " <leader>fs : add folding marker start
 nnoremap <leader>fs i" {{{<esc>j
@@ -166,6 +174,9 @@ inoremap <leader>fs " {{{
 " <leader>fe : add folding marker end
 inoremap <leader>fe " }}}
 nnoremap <leader>fe i" }}}<esc>j
+
+" set folding for file types
+let ruby_fold=99
 " }}}
 "------------------------------------------------------------------------------
 " Movement mappings
@@ -206,8 +217,9 @@ iabbrev ccopy Copyright 2014 Elmer Landaverde, all rights reserved.
 " Set folding settings
 augroup filetype_folding
   autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
-  autocmd FileType vim setlocal foldlevelstart=0
+  autocmd FileType vim  setlocal foldmethod=marker
+  autocmd FileType vim  setlocal foldlevelstart=0
+  autocmd FileType ruby setlocal foldlevelstart=99
 augroup END
 " }}}
 "------------------------------------------------------------------------------
@@ -286,8 +298,17 @@ function! LSidebarToggle()
     execute "set nonumber!"
     execute ( bufwinnr(b) . "wincmd w" )
 endf
+
+augroup closeSideBar
+  autocmd!
+  autocmd VimEnter * NERDTreeToggle
+  autocmd VimEnter * BuffergatorToggle
+augroup END
 nnoremap  <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
-" nnoremap! <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
+noremap! <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
+
+" nnoremap <silent> <leader>w <esc>:NERDTreeToggle<cr>
+
 " }}}
 "------------------------------------------------------------------------------
 " Tagbar plugin
@@ -350,4 +371,3 @@ augroup indentguides
 augroup END
 " }}}
 " }}}
-
